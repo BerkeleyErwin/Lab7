@@ -49,11 +49,11 @@ router.setState = function(state) {
     header.innerHTML = 'Settings';
   } else if (state.name == 'entry') { // Entries state
     let newJournal = document.createElement('entry-page');
-    history.pushState(state, '', '#entry' + state.id);
+    history.pushState({page: state.id}, '', '#entry' + state.id);
     body.className = 'single-entry';
     header.innerHTML = 'Entry ' + state.id;
     newJournal.entry = document.getElementById(state.id).entry;
     body.removeChild(document.querySelector('entry-page'));
-    body.appendChild(document.createElement('entry-page'));
+    body.appendChild(newJournal);
   }
 };
